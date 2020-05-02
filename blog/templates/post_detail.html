@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div><h2>{{ post.post_title }}</h2></div>
+<div><h6>Категория: {{ post.post_category.category_name}}</h6></div>
+<div><h7>Дата публикации: {{ post.post_date_creation.strftime('%d-%m-%Y') }}</h7>
+    <h7>Автор:{{ post.user.user_name }}</h7>
+</div>
+<div>Время на чтение: {{ post.post_reading_time }}</div>
+<hr>
+<div>{{ post.post_text }}</div>
+<hr>
+{% for tag in post.tags%}
+<a href="{{url_for('posts_by_tag', tag_id=tag.tag_id)}}">{{ tag }}</a>
+{% endfor %}
+<hr>
+<div><a href="{{url_for('index_page')}}">Все публикации >></a></div>
+{% endblock%}
