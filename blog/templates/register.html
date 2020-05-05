@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 mx-auto">
+          <h1>Регистрация</h1>
     {% with messages=get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
@@ -9,17 +14,28 @@
         {% endif %}
     {% endwith%}
 
-
 <form action="" method="post">
     {{ form.csrf_token() }}
     {% for field in form if field.name != "csrf_token" %}
-    <p>{{ field.label() }}</p>
-    <p> {{ field}}
-    {% for error in field.errors %}
+    <div class="control-form">
+        <div>
+            {{ field.label() }}
+        </div>
+        <div>
+           {{ field }}
+        </div>
+
+        {% for error in field.errors %}
         <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </div>
+
     {% endfor %}
-    </p>
-    {% endfor %}
+
 </form>
 
+
+      </div>
+    </div>
+</div>
 {% endblock %}

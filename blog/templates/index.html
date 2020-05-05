@@ -2,7 +2,7 @@
 
 {% block content %}
 
-  <div class="container">
+<div class="container" xmlns="http://www.w3.org/1999/html">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         {% for post in posts.items %}
@@ -15,9 +15,9 @@
               {{ post.short_description}}
             </h3>
           </a>
-          <p class="post-meta">Опубликовано
-            <a href="{{ url_for('posts_by_user', user_id=post.user.id) }}">{{ post.user.user_name }}</a>
-            on {{ post.post_date_creation.strftime('%d-%m-%Y') }}</p>
+          <p class="post-meta"><i class="fas fa-user-astronaut"></i>
+            <a href="{{ url_for('posts_by_user', user_id=post.user.id) }}"> {{ post.user.user_name }}</a>
+            <i class="far fa-calendar-alt"></i> {{ post.post_date_creation.strftime('%d-%m-%Y') }}</p>
         </div>
         <hr>
         {% endfor %}
